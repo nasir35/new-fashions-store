@@ -2,33 +2,16 @@ body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
-.search-field {
-  border: none;
-  border-radius: 50px;
-  padding: 5px;
-  outline: none;
-}
-.search-field:hover {
-  outline: none;
-  border: none;
-}
-.search-box {
-  border: 1px solid rgb(3, 118, 211);
-  width: 281px;
-  border-radius: 5px;
-  margin: auto;
-  margin-top: 50px;
-  border-right: none;
-}
-.search-button {
-  padding: 10px 50px;
-  border-radius: 25px;
-  margin-left: 20px;
+
+/* removed some unnecessary styles as i used bootstrap to apply some styles */
+
+/* added background color into body by .main class  */
+.main{
+  background-color: #d0d6d8;
 }
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* border: 1px solid black; */
   text-align: center;
   width: 100%;
   margin: auto;
@@ -36,8 +19,13 @@ body {
   justify-content: center;
 }
 .single-product {
+  /* added margin and border radius to make products cards individually identifiable  */
+  margin: 8px;
   padding: 10px;
+  border-radius: 8px;
   transition: 0.6s;
+  background-color: #fff;
+  color: rgb(61, 61, 61);
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
@@ -49,8 +37,10 @@ body {
   height: 150px;
 }
 .cart {
+  /* added background-color in the cart  */
+  background-color: #E4DBE3;
   width: 350px;
-  /* border: 1px solid green; */
+  border: 1px solid green;
   padding: 10px;
   box-shadow: 10px 10px 20px gray;
   border-radius: 5px;
