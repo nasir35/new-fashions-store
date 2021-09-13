@@ -5,6 +5,27 @@ const loadProducts = () => {
   showProducts(data);
 };
 
+/* getRatingStar function will check rating and return respected icons to represent the rating.*/ 
+function getRatingStar(rating){
+  if(rating==5){
+    return '<span class="text-warning"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></span>';
+  }
+  else if(rating>=4 && rating<5){
+    return '<span class="text-warning"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i></span>';
+  }
+  else if(rating>=3 && rating<4){
+    return '<span class="text-warning"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> <i class="far fa-star"></i></span>';
+  }
+  else if(rating>=2 && rating<3){
+    return '<span class="text-warning"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></span>';
+  }
+  else if(rating>=1 && rating<2){
+    return '<span class="text-warning"><i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></span>';
+  }
+  else{
+    return '<span class="text-warning"><i class="fas fa-star-half-alt"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></span>';
+  }  
+}
 // show all product in UI 
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
@@ -14,16 +35,19 @@ const showProducts = (products) => {
     const div = document.createElement("div");
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
-      <div>
-    <img class="product-image" src="${image}""></img>
+      <div class="rounded">
+    <img class="product-image pb-2" src="${image}""></img>
       </div>
-      <h5>${product.title}</h5>
-      <p>Category: ${product.category}</p>
-      <p><b>Rating: ${product.rating.rate}</b></p>
-      <p><b>Rated by: ${product.rating.count} user</b></p>      
+      <h5 class="product-title">${(product.title).slice(0,25)}</h5>
+      <p>Category: <span style="color: #ddd">${product.category}</span></p>
+      <p><b>Rating:</b> ${getRatingStar(product.rating.rate)} <b>${product.rating.rate}</b></p>
+      <p><strong>Rated by: ${product.rating.count} User </strong> (<i class="fas fa-users text-info"></i>)</p>      
       <h4>Price: $ ${product.price}</h4>
+      <div class="">
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">Add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button id="details-btn" class="btn btn-info">Details</button>
+      </div>
+      </div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
